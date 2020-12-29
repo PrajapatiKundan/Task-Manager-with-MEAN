@@ -1,11 +1,12 @@
 const express = require('express')
-const app = express()
 const mongoose = require('mongoose')
-const { MONGOURI } = require('./config/keys')
-const bodyParser = require('body-parser')
 const cors = require('cors')
+const { MONGOURI } = require('./config/keys')
 
-//------------------------------------------------Make Connection------------------------------------------|
+const app = express()
+
+//------------------------------------------------Make Connection with MONGO ----------------------------------------------
+
 mongoose.connect(MONGOURI, {
     useNewUrlParser:true,
     useUnifiedTopology:true,
@@ -21,26 +22,27 @@ mongoose.connection.on('connected', () => {
 mongoose.connection.on('error', (err) => {
     console.log("Error in server connection : ", err)
 })
-//-----------------------------------------------Middleware---------------------------------|
-app.use(cors({origin: 'http://localhost:4200'}))
-app.use(express.json())
-// app.use(bodyParser.json())
-//-----------------------------------------------Model Registration-------------------------------------------|
+
+//-----------------------------------------------Middleware----------------------------------------------------------------
+
+app.use( cors( { origin: 'http://localhost:4200' } ) )
+app.use( express.json() )//parse incoming request to json
+
+//-----------------------------------------------Model Registration--------------------------------------------------------
+
+/*
+require('./models/user-model')
 require('./models/list-model')
 require('./models/task-model')
+*/
 
-//parse incoming request to json
+//-----------------------------------------------Routers--------------------------------------------------------------------
 
-
-
-//CORS enable middleware
-// app.use(function(req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "YOUR-DOMAIN.TLD"); // update to match the domain you will make the request from
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//   next();
-// });
 app.use(require('./routes/list'))
-//------------------------------------------------------------------------------------------|
+app.use(require('./routes/auth'))
+
+//----------------------------------------------Listening port--------------------------------------------------------------
+
 app.listen(3000, () => {
     console.log("listening on port 3000...");
 });

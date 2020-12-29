@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+.centered-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #44ddd0
+}
+.model-box {
+    min-height: 180px;
+    width: 400px;
+    background-color: white;
+    border-radius: 5px;
+    padding: 30px;
+    margin-top: 150px;
+}
+.title {
+    font-family: 'Lato', sans-serif;
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: #2ec1ac;
+    font-weight: bold;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,14 @@
+<div class="centered-content">
+    <div class="model-box">
+      <h1 class="title">
+          Create a new task
+      </h1>
+      <input #taskTitle type="text" class="form-control" style="margin-top: 20px;" placeholder="Enter task..."><br>
+      <button 
+            class="btn btn-sm float-end" 
+            (click)="createNewTask(taskTitle.value)" 
+            type="button"
+            style="color: white; background-color: #2ec1ac;"
+    >Create</button>
+    </div>
+</div>

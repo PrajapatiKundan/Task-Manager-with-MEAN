@@ -1,8 +1,8 @@
 # Task Manager
 
-**`Task Manager`** is a web application developed using **MEAN** stack technologies that helps you to stay organized and manage your day to day work.
+**`Task Manager`** is a web application developed using **MEAN** stack technology that helps user to stay organized and manage their day to day work.
 
-## Build with
+## Built with
 
 - Angular
 - Bootstrap
